@@ -41,14 +41,17 @@ document.querySelectorAll(".reveal").forEach((element) => revealObserver.observe
 const searchInput = document.querySelector("#download-search");
 const downloadItems = document.querySelectorAll(".download-item");
 const emptyState = document.querySelector(".empty-state");
+
 searchInput.addEventListener("input", () => {
   const keyword = searchInput.value.trim().toLowerCase();
   let visibleCount = 0;
+
   downloadItems.forEach((item) => {
     const isMatch = item.dataset.name.toLowerCase().includes(keyword);
     item.style.display = isMatch ? "" : "none";
     if (isMatch) visibleCount += 1;
   });
+
   emptyState.style.display = visibleCount ? "none" : "block";
 });
 
